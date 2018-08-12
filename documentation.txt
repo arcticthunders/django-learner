@@ -1,0 +1,40 @@
+the virtual environment is created using th commands
+
+pip install virtualenv
+virtualenv {{environment_name}}
+cd virtualenv
+source bin/activate
+
+activates the virtual environment, and any packages installed now will be
+within this wrapper
+
+deactivate
+
+this command will let you exit the wrapper
+
+pip install django  // in the env_mysite
+django-admin startproject {{projec}}
+
+python manage.py migrate
+inside the mysite dir creates a new SQLite database and necessary database
+tables according to the file created by the startproject command
+
+python manage.py runserver
+
+starting djangos development server
+
+
+in the urls.py :
+
+from django.conf.urls import url
+from django.contrib import admin
+
+from mysite.views import hello
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),  #first argument is a regex that enables comparison
+    url(r'^hello/$', hello),  #the r treats it as a raw string and does enable backslash escaping as in \n
+]
+
+two changes made to import the function that provides the http response and
+the mapping of the url to the Function
